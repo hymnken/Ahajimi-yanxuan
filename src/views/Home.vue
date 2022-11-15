@@ -254,7 +254,7 @@ export default {
     .title {
       color: $colorC;
       font-size: $fontA;
-      white-space: nowrap;
+      white-space: nowrap;  //文字不换行
     }
   }
 }

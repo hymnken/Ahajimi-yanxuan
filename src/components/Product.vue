@@ -3,7 +3,6 @@
     <img class="pic" :src="item.listPicUrl" alt />
     <div class="desc">{{item.simpleDesc}}</div>
     <div class="name">{{item.name}}</div>
-    <!-- <div class="name">阿斯顿发送到发生的发生地方萨达撒打发斯蒂芬撒大声地分撒地方撒打发斯蒂芬sad撒大声地分撒地方撒大时代发顺丰</div> -->
     <div class="price">￥{{item.retailPrice}}</div>
   </div>
 </template>

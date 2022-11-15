@@ -18,14 +18,15 @@
 
     <!-- 搜索联想 -->
     <ul class="suggest" v-show="isShowSuggest">
-      <li @click="select(item)" class="suggest-item" v-for="(item, index) in suggestList" :key="index">{{item}}</li>
+      <li @click="select(item)" class="suggest-item" v-for="(item, index)
+      in suggestList" :key="index">{{item}}</li>
     </ul>
 
     <!-- 历史记录 -->
     <div class="search-history" v-show="!isShowSuggest && !isShowResult">
       <div class="history-title">
         <span>历史记录</span>
-        <i class="iconfont icon-shanchu1" @click="delHistory"></i>
+        <i class="iconfont icon-shanchu1" @click="c"></i>
       </div>
       <ul class="history">
         <li @click="select(item)" class="history-item" v-for="(item, index) in history" :key="index">
@@ -59,6 +60,7 @@ export default {
   },
   components: { Product, Loading },
   computed: {
+    // 历史记录不显示
     isShowSuggest () {
       return this.suggestList.length
     },
