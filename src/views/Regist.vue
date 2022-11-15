@@ -18,7 +18,8 @@ export default {
       this.$showToast({
         msg
       })
-      if (code === 1) { // 注册成功
+      if (code === 1) {
+        // 注册成功
         this.$router.push('/profile/login')
       }
     }

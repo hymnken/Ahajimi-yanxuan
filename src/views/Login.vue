@@ -33,7 +33,8 @@ export default {
     }
   }
 }
-// session:服务端 VS cookie:客户端
+// session:服务端
+// cookie:客户端
 </script>
 
 <style>

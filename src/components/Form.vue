@@ -2,22 +2,23 @@
   <form class="form">
     <!-- 用户名 -->
     <div class="form-item">
-      <input type="text" placeholder="用户名" v-model.trim="username" />
+      <input type="text" placeholder="请输入用户名" v-model.trim="username" />
       <div class="clear" @click="clearUsername" v-show="isClearUsername">
         <i class="iconfont icon-shanchu"></i>
       </div>
     </div>
     <!-- 密码 -->
     <div class="form-item">
-      <input type="password" placeholder="密码" v-model.trim="password" />
+      <input type="password" placeholder="请输入密码" v-model.trim="password" />
       <div class="clear" @click="clearPassword" v-show="isClearPassword">
         <i class="iconfont icon-shanchu"></i>
       </div>
     </div>
+    <!-- 注册才显示 -->
     <div v-show="formType === 'regist'">
       <!-- 邮箱 -->
       <div class="form-item">
-        <input type="text" placeholder="邮箱账号" v-model.trim="email" />
+        <input type="text" placeholder="请输入邮箱账号" v-model.trim="email" />
         <div class="clear" @click="clearEmail" v-show="isClearEmail">
           <i class="iconfont icon-shanchu"></i>
         </div>
@@ -25,7 +26,10 @@
       <!-- 验证码 -->
       <div class="form-item">
         <input type="text" placeholder="请输入邮箱验证码" v-model.trim="code" />
-        <div class="status-msg" @click="getCode" v-show="!isShowStatusMsg">获取验证码</div>
+        <!-- 获取验证码按钮 -->
+        <div class="status-msg" @click="getCode" v-show="!isShowStatusMsg">
+          获取验证码</div>
+          <!-- 60秒定时器 -->
         <div class="status-msg" v-show="isShowStatusMsg">{{statusMsg}}</div>
       </div>
     </div>
@@ -49,6 +53,7 @@ export default {
       statusMsg: ''
     }
   },
+  // 父组件传过来 判断是登录还是注册
   props: {
     // login regist
     formType: {
@@ -86,6 +91,23 @@ export default {
       }
       return data
     }
+    // title () {
+    //   let data = {}
+    //   if (this.formType === 'login') {
+    //     data = {
+    //       go: '注册账号',
+    //       btn: '登录',
+    //       url: '/profile/regist'
+    //     }
+    //   } else if (this.formType === 'regist') {
+    //     data = {
+    //       go: '回到登录',
+    //       btn: '注册',
+    //       url: '/profile/login'
+    //     }
+    //   }
+    //   return data
+    // }
   },
   methods: {
     clearUsername () {
@@ -97,7 +119,7 @@ export default {
     clearEmail () {
       this.email = ''
     },
-    // 获取验证码
+    // 获取验证码 邮箱格式验证 60秒有效期
     async getCode () {
       if (!this.email) {
         this.$showToast({
@@ -131,6 +153,7 @@ export default {
         msg
       })
     },
+    // 表单验证
     verifyForm () {
       let msg = ''
       if (this.username.trim() === '') {

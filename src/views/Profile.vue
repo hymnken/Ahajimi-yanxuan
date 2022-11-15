@@ -51,6 +51,7 @@ export default {
             this.$showToast({
               msg: '退出成功'
             })
+            // 刷新当前页面
             this.$router.go(0)
           } else {
             this.$showToast({

@@ -20,6 +20,7 @@ export default {
       callback: null
     }
   },
+  // 不显示按钮的情况
   watch: {
     show () {
       if (this.show && !this.btnShow) {
@@ -35,7 +36,9 @@ export default {
     },
     confirm () {
       this.cancel()
+      // 消失渲染完成在调用
       this.$nextTick(() => {
+        // 前面是判断 后面才是调用
         this.callback && this.callback()
       })
     }
