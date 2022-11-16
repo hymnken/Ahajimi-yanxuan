@@ -32,7 +32,7 @@
     <div class="footer">
       <div class="checkall">
         <input type="checkbox" class="check-all" v-model="checkAllFlag" @change="toggleCheckAll" />
-        <span class="checked">已选（{{checkNum}}）</span>
+        <span class="checked">已选（{{checkNum}})</span>
       </div>
       <div class="total">合计：￥{{total}}</div>
       <div class="confirm" @click="confirm" :class="{'btn-disable': checkNum === 0}">下单</div>
@@ -44,14 +44,7 @@
 </template>
 
 <script>
-import {
-  API_CART_DETAIL,
-  API_USER_VERIFY,
-  API_CART_UPDATE,
-  API_CART_CHECK,
-  API_CART_DEL,
-  API_ORDER_CREATE
-} from '@/api.config.js'
+import { API_CART_DETAIL, API_USER_VERIFY, API_CART_UPDATE, API_CART_CHECK, API_CART_DEL, API_ORDER_CREATE } from '@/api.config.js'
 import NavFooter from '../components/NavFooter'
 import Loading from '../components/Loading'
 export default {
@@ -66,6 +59,7 @@ export default {
   },
   components: { NavFooter, Loading },
   computed: {
+    // 选中商品数量
     checkNum () {
       return this.cartDetail.reduce((sum, product) => {
         if (product.checked) {
@@ -82,10 +76,12 @@ export default {
           }
           return sum
         }, 0)
+        // 与数组商品长度 相等就证明全选了 返回true
         return selectNum === this.cartDetail.length
       },
+      // 全选全部选按钮 用set 给它传true/false
       set (val) {
-        console.log(val)
+        // console.log(val)
         this.checkAllFlagTemp = val
       }
     },
@@ -107,13 +103,16 @@ export default {
       this.cartDetail = res
       this.isLoading = false
     },
+    // 勾选/取消勾选 要更新下数据库
     toggleCheckOne (item) {
       this.updateCart(item)
     },
+    // 更新下数据库信息
     async updateCart (item) {
       await this.$axios.post(API_CART_UPDATE, item)
     },
     toggleCheckAll () {
+      // 给每个商品设置与之相同的
       this.cartDetail.forEach(product => {
         product.checked = this.checkAllFlagTemp
       })

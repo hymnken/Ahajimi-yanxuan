@@ -47,6 +47,7 @@ export default {
     }
   },
   created () {
+    // 防止刷新后vuex数据没了 每次都获取一下
     this.getCartNum()
   }
 }

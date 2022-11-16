@@ -7,6 +7,7 @@
         <i class="iconfont icon-icon-test"></i>
         <span class="placeholoder">搜索商品，共{{total}}款好物</span>
       </div>
+      <!-- 登录按钮判断 没登陆就显示登录 登陆后显示购物车按钮 -->
       <div v-if="userinfo" class="cart" @click="goCart">
         <i class="iconfont icon-gouwuchekong"></i>
         <span class="cart-num" v-if="cartNum > 0">{{cartNum}}</span>

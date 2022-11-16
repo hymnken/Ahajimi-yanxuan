@@ -22,9 +22,9 @@ axios.defaults.baseURL = '/api'
 
 // 接口拦截
 axios.interceptors.response.use(response => {
-  // console.log(response)
   const res = response.data
-  if (res.status === 1) { // 请求成功,data过滤掉
+  if (res.status === 1) {
+    // 请求成功,data过滤掉
     return res.data
   } else if (res.status === 0) { // 请求失败
     console.error(res)

@@ -34,11 +34,7 @@
 </template>
 
 <script>
-import {
-  API_PRODUCT_DETAIL,
-  API_USER_VERIFY,
-  API_CART_ADD
-} from '@/api.config.js'
+import { API_PRODUCT_DETAIL, API_USER_VERIFY, API_CART_ADD } from '@/api.config.js'
 import HeaderComp from '../components/Header'
 import Swiper from '../components/Swiper'
 import Loading from '../components/Loading'
@@ -88,7 +84,6 @@ export default {
           price: this.detail.activityPrice || this.detail.retailPrice,
           pic: this.detail.itemDetail.picUrl1
         })
-        // console.log(res)
         this.setCartNum(1)
         this.$showToast({
           msg: '加入成功'
