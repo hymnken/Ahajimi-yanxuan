@@ -173,10 +173,12 @@ export default {
       }
       return true
     },
+    // 加密下密码 在传入后端
     onClick () {
       this.$data.password = CryptoJS.MD5(this.$data.password).toString()
       this.verifyForm() && this.$emit('onClick', this.$data)
     },
+    // 去往指定的网页
     go () {
       this.$router.push(this.title.url)
     }
